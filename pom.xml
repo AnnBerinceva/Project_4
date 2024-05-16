@@ -14,7 +14,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -24,13 +23,13 @@
 
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-api</artifactId>
+            <artifactId>selenium-java</artifactId>
             <version>4.20.0</version>
         </dependency>
 
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
+            <artifactId>selenium-api</artifactId>
             <version>4.20.0</version>
         </dependency>
 
@@ -45,8 +44,26 @@
             <artifactId>selenium-firefox-driver</artifactId>
             <version>4.20.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>Sprint4_BerincevaAnn</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>16</source>
+                    <target>16</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 
 </project>
