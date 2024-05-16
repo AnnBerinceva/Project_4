@@ -44,4 +44,4 @@ public class dropdownList extends constants {
         String actualAnswer = answer.getText();
         assertEquals("Текст ответа не совпадает с ожидаемым", expectedText, actualAnswer);
     }
-} //смержила первый пул реквест. простите, пожалуйста. удалилась переписка с вами(((( не знаю как так вышло. что-то переработала видимо
+}
