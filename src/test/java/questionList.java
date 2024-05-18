@@ -9,12 +9,12 @@ import java.util.Collection;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class dropdownList extends constants {
-    private dropdownList dropdownList;
+public class questionList extends constants {
+    private questionList dropdownList;
     private int numberQuestion;
     private String expectedText;
 
-    public dropdownList(int numberQuestion, String expectedText) {
+    public questionList(int numberQuestion, String expectedText) {
         this.numberQuestion = numberQuestion;
         this.expectedText = expectedText;
     }
