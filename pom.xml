@@ -26,6 +26,7 @@
             <artifactId>selenium-java</artifactId>
             <version>4.20.0</version>
         </dependency>
+<<<<<<< HEAD
 
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
@@ -64,6 +65,9 @@
             </plugin>
         </plugins>
     </build>
+=======
+    </dependencies>
+>>>>>>> 6620147bb6e635d4cbdecd94a0cae8ebbe57b0cf
 
 
 </project>
