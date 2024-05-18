@@ -1,40 +1,63 @@
-import org.junit.After;
+import pageobject.orderPage;
+import pageobject.startPage;
+import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import java.util.Arrays;
+import java.util.Collection;
+import static org.junit.Assert.assertTrue;
 
-public class OrderScooter {
-    private WebDriver driver;
-    @Test
-    public void testSecond(){
-        driver = new ChromeDriver();
-        driver.get("https://qa-scooter.praktikum-services.ru/");   //Открыли
-        driver.manage().window().maximize(); //развернули
-        StartPageObject objStartPage = new StartPageObject(driver);
-        objStartPage.clickOrderButtonStartPage();  //кнопка заказать сверху
-        LoginPageObject objLoginPage = new LoginPageObject(driver);
-        objLoginPage.login("Анна", "Иванов", "улица Большая Якиманка, 43","+71234567890"); //заполнили первый раз
-        RentPageObject objRentPage = new RentPageObject(driver);
-        objRentPage.loginSecond("comment 123"); //заполнили "Про аренду" первый раз
-        CheckoutPageObject objCheckoutPage = new CheckoutPageObject(driver);
-        objCheckoutPage.clickButtonYes(); //кнопка "Да"некликабельна
-        objCheckoutPage.clickButtonNo(); //нажали "Нет
-        objRentPage.clickButtonBack(); //нажали "Назад"
-        driver.navigate().refresh(); //обновили
-        objLoginPage.login("Наталья", "Сидорова", "тестовая 10","+71111111111"); //заполнили второй раз
-        objRentPage.loginThird(" второй тестовый comment 123"); //заполнили "Про аренду" второй раз
-        objCheckoutPage.clickButtonNo(); //нажали "Нет
-        objStartPage.clickLogoScooter(); //клик на "Самокат"
-        WebElement element = driver.findElement(objStartPage.orderButtonAfterScroll);
-        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element); //скролл до второй кнопки "Заказать"
-        objStartPage.clickOrderButtonAfterScroll(); //нажали вторую кнопку "Заказать"
+@RunWith(Parameterized.class)
+public class orderScooter extends constants {
+    private startPage startPage;
+    private orderPage orderPage;
+    private final String name;
+    private final String surname;
+    private final String address;
+    private final String stationMetro;
+    private final String phone;
+    private final int period;
+    private final Boolean isBlack;
+    private final Boolean isGrey;
+    private final String comment;
 
-//всплывающее окно с сообщением об успешном создании заказа не появляется, кнопка "Да" некликабельна
+    public orderScooter(String name, String surname, String address, String stationMetro, String phone, int period, Boolean isBlack, Boolean isGrey, String comment) {
+        this.name = name;
+        this.surname = surname;
+        this.address = address;
+        this.stationMetro = stationMetro;
+        this.phone = phone;
+        this.period = period;
+        this.isBlack = isBlack;
+        this.isGrey = isGrey;
+        this.comment = comment;
     }
-    @After
-    public void close() {
-        driver.quit();
+
+    @Parameterized.Parameters
+    public static Collection<Object[]> testData() {
+        return Arrays.asList(new Object[][]{
+                {"Анна", "Иванов", "улица Большая Якиманка, 43", "+71234567890", 25, false, true, "комментарий тест"},
+                {"Петр", "Петров", "пр. Невский, д. 10", "Сокольники", "+79007654321", 9, true, false, "комментарий тест001"}
+        });
+    }
+
+    @Before
+    public void beforeTest() {
+        super.beforeTest();
+        startPage = new startPage(driver);
+        orderPage = new orderPage(driver);
+    }
+    @Test
+    public void getOrderButton() {
+        startPage.getOrderButton().click();
+        orderPage.order(name, surname, address, stationMetro, phone, period, isBlack, isGrey, comment);
+        assertTrue("orderIssue отсутствует", !orderPage.isOrderIssue());
+    }
+    @Test
+    public void orderScooterOrderButtonDown() {
+        startPage.getOrderButtonDown().click();
+        orderPage.order(name, surname, address, stationMetro, phone, period, isBlack, isGrey, comment);
+        assertTrue("orderIssue отсутствует", !orderPage.isOrderIssue());
     }
 }
