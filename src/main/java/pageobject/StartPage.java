@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class startPage {
+public class StartPage {
     private static WebDriver driver;
 
     public By logoScooter = By.xpath(".//img[@src = '/assets/scooter.svg']"); //логотип самоката
@@ -18,7 +18,7 @@ public class startPage {
     public static By questions = (By.className("accordion__button")); //вопросы
     public static By answer = By.xpath(".//div[@data-accordion-component='AccordionItemPanel']"); //ответы
 
-    public startPage(WebDriver driver) {  this.driver = driver; }
+    public StartPage(WebDriver driver) {  this.driver = driver; }
     public WebElement getLogoScooter() {
         return driver.findElement(logoScooter);
     }

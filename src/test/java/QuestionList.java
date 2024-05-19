@@ -3,18 +3,18 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebElement;
-import pageobject.startPage;
+import pageobject.StartPage;
 import java.util.Arrays;
 import java.util.Collection;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class questionList extends constants {
-    private questionList dropdownList;
+public class QuestionList extends BaseTest {
+    private QuestionList dropdownList;
     private int numberQuestion;
     private String expectedText;
 
-    public questionList(int numberQuestion, String expectedText) {
+    public QuestionList(int numberQuestion, String expectedText) {
         this.numberQuestion = numberQuestion;
         this.expectedText = expectedText;
     }
@@ -34,13 +34,13 @@ public class questionList extends constants {
     @Before
    public void beforeTest() {
         super.beforeTest();
-        startPage startPage = new startPage(driver);
+        StartPage startPage = new StartPage(driver);
     }
     @Test
     public void testOrderScooter(){
-        WebElement question = startPage.getQuestion(numberQuestion);
+        WebElement question = StartPage.getQuestion(numberQuestion);
         question.click();
-        WebElement answer = startPage.getAnswer(numberQuestion);
+        WebElement answer = StartPage.getAnswer(numberQuestion);
         String actualAnswer = answer.getText();
         assertEquals("Текст ответа не совпадает с ожидаемым", expectedText, actualAnswer);
     }

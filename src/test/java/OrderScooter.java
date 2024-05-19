@@ -1,5 +1,5 @@
-import pageobject.orderPage;
-import pageobject.startPage;
+import pageobject.OrderPage;
+import pageobject.StartPage;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,9 +9,9 @@ import java.util.Collection;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(Parameterized.class)
-public class orderScooter extends constants {
-    private startPage startPage;
-    private orderPage orderPage;
+public class OrderScooter extends BaseTest {
+    private StartPage startPage;
+    private OrderPage orderPage;
     private final String name;
     private final String surname;
     private final String address;
@@ -22,7 +22,7 @@ public class orderScooter extends constants {
     private final Boolean isGrey;
     private final String comment;
 
-    public orderScooter(String name, String surname, String address, String stationMetro, String phone, int period, Boolean isBlack, Boolean isGrey, String comment) {
+    public OrderScooter(String name, String surname, String address, String stationMetro, String phone, int period, Boolean isBlack, Boolean isGrey, String comment) {
         this.name = name;
         this.surname = surname;
         this.address = address;
@@ -45,8 +45,8 @@ public class orderScooter extends constants {
     @Before
     public void beforeTest() {
         super.beforeTest();
-        startPage = new startPage(driver);
-        orderPage = new orderPage(driver);
+        startPage = new StartPage(driver);
+        orderPage = new OrderPage(driver);
     }
     @Test
     public void getOrderButton() {

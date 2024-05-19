@@ -9,7 +9,7 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class orderPage {
+public class OrderPage {
     private WebDriver driver;
     private WebDriverWait wait;
     public By nameField = By.xpath(".//input[@class = 'Input_Input__1iN_Z Input_Responsible__1jDKN' and @placeholder = '* Имя']"); //имя
@@ -27,7 +27,7 @@ public class orderPage {
     public By buttonYes = By.xpath(".//button[@class = 'Button_Button__ra12g Button_Middle__1CSJM' and text() = 'Да']"); //кнопка да
     public By orderIssue = By.xpath(".//div[text()='Заказ оформлен']"); //заказ оформлен
 
-    public orderPage(WebDriver driver) {
+    public OrderPage(WebDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
     }

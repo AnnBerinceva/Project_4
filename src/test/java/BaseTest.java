@@ -5,7 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import java.time.Duration;
 import static java.time.temporal.ChronoUnit.SECONDS;
-public class constants {
+public class BaseTest {
     protected WebDriver driver;
     protected String site = "https://qa-scooter.praktikum-services.ru/";
     @Before
